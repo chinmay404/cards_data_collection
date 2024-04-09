@@ -2,3 +2,4 @@ python-dotenv
 streamlit
 langchain_google_genai
 langchain
+psycopg2
