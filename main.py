@@ -34,6 +34,7 @@ def main():
     
     fetched_data = None
     with st.sidebar:
+        api_key = st.text_input("Enter your API key:", type="password") 
         uploaded_front_image = st.file_uploader("Upload Front Image", accept_multiple_files=False, type=["jpg", "png", "jpeg"]) or None
         uploaded_back_image = st.file_uploader("Upload Back Image (Optional)", accept_multiple_files=False, type=["jpg", "png", "jpeg"]) or None
         button = st.button("Process")
@@ -68,13 +69,13 @@ def main():
                     st.divider()
                 try:
                     if uploaded_front_image and uploaded_back_image:
-                        results = process_image(front_image_path, back_image_path)
+                        results = process_image(front_image_path, back_image_path,api_key)
                     elif uploaded_front_image:
                         st.warning("Limited information available. Backside can provide additional details.")
-                        results = process_image_one_side_only(front_image_path) 
+                        results = process_image_one_side_only(front_image_path,api_key) 
                     elif uploaded_back_image:
                         st.warning("Limited information available. Frontside might contain crucial details.")
-                        results = process_image_one_side_only(back_image_path)
+                        results = process_image_one_side_only(back_image_path,api_key)
                     try:
                         if on:
                             st.write(results)
@@ -111,6 +112,8 @@ def main():
             st.error(f"Error reading uploaded files: {e}")
 
     else:
+        st.subheader("Add Gemini API Key")
+        st.markdown('Adding Feature to \n1 . export data to csv \n2 . make API call \n3 . Bulk Upload for cards.')
         st.error(f"Please upload both front and back images of the visiting card.")
 
 def write_to_db(data):

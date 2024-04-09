@@ -11,13 +11,9 @@ import streamlit as st
 from langchain_core.output_parsers import JsonOutputParser
 
 
-
-
-
-def process_image(uploaded_front_image_path, uploaded_back_image_path):
+def process_image(uploaded_front_image_path, uploaded_back_image_path,api_key):
     parser = JsonOutputParser()
-    load_dotenv()
-    google_api_key = os.getenv("GOOGLE_API_KEY")
+    google_api_key = api_key
 
     if not google_api_key:
         st.error("Please set the GOOGLE_API_KEY environment variable.")
@@ -64,10 +60,9 @@ def process_image(uploaded_front_image_path, uploaded_back_image_path):
 
 
 
-def process_image_one_side_only(path):
+def process_image_one_side_only(path,api_key):
     parser = JsonOutputParser()
-    load_dotenv()
-    google_api_key = os.getenv("GOOGLE_API_KEY")
+    google_api_key = api_key
 
     if not google_api_key:
         st.error("Please set the GOOGLE_API_KEY environment variable.")
