@@ -1,6 +1,4 @@
-python-dotenv
 streamlit
 langchain   
 langchain-google-genai
 psycopg2-binary 
-python-psycopg2
