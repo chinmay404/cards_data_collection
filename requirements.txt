@@ -3,3 +3,5 @@ streamlit
 langchain   
 langchain-google-genai
 psycopg2
+psycopg2-binary 
+python-psycopg2
