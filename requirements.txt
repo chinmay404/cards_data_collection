@@ -2,3 +2,4 @@ streamlit
 langchain   
 langchain-google-genai
 psycopg2-binary 
+load_dotenv
